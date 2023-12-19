@@ -1,0 +1,105 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f8499e;
+    user-select: none;
+}
+
+main{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(
+        325deg,
+    #03001e 0%, 
+    #7303c0 30%, 
+    #ec38bc 70%, 
+    #fdeff9 100% );
+    padding: 40px 60px;
+}
+
+h2{
+    font-size: 3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+h4{
+    font-size: 1.3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.reset{
+    padding: 15px 20px;
+    width: 100%;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.reset:focus{
+    color: #f81ebe;
+    background-color: #03001ec4;
+}
+
+.game{
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    /* Animações */
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item{
+    position: relative;
+    width: 95px;
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    font-size: 3em;
+
+    transform: rotateY(180deg);
+    transition: 0.25s;
+}
+
+/* Escondendo a carta */
+/* Estamos criando um filho exatamente em cima do pai */
+.item::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* The inset property sets the distance between an element and the parent element. */
+    background: #fdeff9;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+/* Quando você clica na carta ele adiciona a classe, mas não faz nada  */
+.item.boxOpen{
+    transform: rotateY(0deg) ;
+}
+
+/* DEPOIS, ela vira 180º */
+.boxOpen::after, .boxMatch::after{
+    transform: rotateY(180deg);
+}
