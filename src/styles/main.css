@@ -12,7 +12,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     gap: 30px;
     background: linear-gradient(
         325deg,
